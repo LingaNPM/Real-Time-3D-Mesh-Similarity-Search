@@ -1,0 +1,36 @@
+# Core functionality
+# i don't mention the version here, with intention of long use and grow.
+numpy
+scipy
+scikit-learn
+trimesh
+open3d
+Pillow
+
+# Similarity search
+faiss-cpu        # For FAISS (use faiss-gpu instead if you want GPU support)
+annoy            # Alternative to FAISS, great for read-only indices
+hnswlib          # Fast approximate search library
+
+# Deep learning (if using learned features)
+torch
+torchvision
+
+# Web UI (optional)
+streamlit
+
+# Profiling (optional but recommended)
+py-spy
+line_profiler
+memory_profiler
+scalene
+hyperfine
+
+# Visualization & Dev Tools
+matplotlib
+seaborn
+tqdm
+ipykernel         # For using Jupyter Notebooks
+
+# Optional (for evaluation scripts)
+pandas
