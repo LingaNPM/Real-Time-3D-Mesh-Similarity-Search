@@ -34,3 +34,10 @@ ipykernel         # For using Jupyter Notebooks
 
 # Optional (for evaluation scripts)
 pandas
+
+# graphics
+pyglet
+PyQt6
+pyqtgraph
+PyOpenGL
+PyOpenGL_accelerate

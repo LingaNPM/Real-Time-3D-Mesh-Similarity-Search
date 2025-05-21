@@ -1,11 +1,11 @@
-from mesh_to_pointcloud import *
-import torch
+import faiss
+import numpy as np
+import pickle
 
-def query_similar(input_mesh_path, model, index, model_paths, k=5):
-    pc = mesh_to_pointcloud(input_mesh_path)
-    pc_tensor = torch.from_numpy(pc.T).unsqueeze(0)
-    with torch.no_grad():
-        feat = model(pc_tensor).numpy().astype('float32')
-    D, I = index.search(feat, k)
-    return [model_paths[i] for i in I[0]]
-    faiss.normalize_L2(query)
+def query_index(index_path, query_vector, top_k=5):
+    index = faiss.read_index(index_path)
+    D, I = index.search(query_vector.reshape(1, -1), top_k)
+    with open(index_path + ".ids.pkl", "rb") as f:
+        ids = pickle.load(f)
+    results = [(ids[i], D[0][j]) for j, i in enumerate(I[0])]
+    return results
